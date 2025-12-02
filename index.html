@@ -825,10 +825,12 @@
         });
 
         // --- DELETE CHECKIN LOGIC ---
-        deleteCheckinBtn.addEventListener('click', async () => {
-            if (!confirm("Tem certeza que deseja EXCLUIR o check-in deste dia? Essa ação não pode ser desfeita.")) {
-                return;
+        if (deleteCheckinBtn) {
+            deleteCheckinBtn.addEventListener('click', async () => {
+                if (!confirm("Tem certeza que deseja EXCLUIR o check-in deste dia? Essa ação não pode ser desfeita.")) {
+                    return;
             }
+        }
             
             const deleteBtn = document.getElementById('delete-checkin-btn');
             deleteBtn.disabled = true;
