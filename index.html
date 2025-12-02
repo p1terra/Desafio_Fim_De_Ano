@@ -63,13 +63,11 @@
 
     <div id="app-container" class="container mx-auto p-4 sm:p-6 max-w-5xl">
         
-        <!-- LOADING -->
         <div id="loading-screen" class="text-center p-10">
             <div class="loader mx-auto"></div>
             <p class="mt-4 text-gray-600">Conectando ao servidor...</p>
         </div>
 
-        <!-- TELA DE SETUP (INÍCIO) -->
         <div id="setup-screen" class="hidden">
             <header class="text-center mb-6 max-w-md mx-auto">
                  <img src="imagens/logo_1.png" alt="logo" class="mx-auto w-full max-w-xs rounded-lg mb-4" onerror="this.style.display='none'">
@@ -93,7 +91,6 @@
                 <button id="confirm-setup-btn" disabled class="w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200">Confirmar e Continuar</button>
             </div>
             
-            <!-- MENU DE RELATÓRIOS -->
             <div class="max-w-md mx-auto text-center mt-6 space-y-2">
                  <button id="score-table-btn" class="w-full bg-gray-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">Tabela de Pontuação: Regras 2.0</button>
                  <div class="flex gap-2">
@@ -108,7 +105,6 @@
             </div>
         </div>
 
-        <!-- TELA PRINCIPAL (FORMULÁRIO) -->
         <div id="main-app" class="hidden">
             <header class="text-center mb-4">
                  <h1 class="text-3xl sm:text-4xl font-bold text-teal-600">Check-in Diário</h1>
@@ -118,7 +114,6 @@
 
             <main class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <form id="checkin-form" class="space-y-6">
-                    <!-- SEÇÃO 1: ATIVIDADE FÍSICA -->
                     <div class="bg-white p-6 rounded-xl shadow-md">
                         <h2 class="text-xl font-bold mb-4 border-b pb-2">1. Atividade Física</h2>
                         <div class="space-y-6">
@@ -128,7 +123,6 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-2">1.2 Sessões de força hoje:</label>
-                                <!-- Seletor estilo Carrossel -->
                                 <div class="flex gap-3 justify-start" id="strength-selector">
                                     <button type="button" class="selector-btn strength-option flex-1 py-3 rounded-lg font-medium" data-value="0">0</button>
                                     <button type="button" class="selector-btn strength-option flex-1 py-3 rounded-lg font-medium" data-value="1">1</button>
@@ -139,13 +133,11 @@
                         </div>
                     </div>
 
-                    <!-- SEÇÃO 2: NUTRIÇÃO -->
                     <div class="bg-white p-6 rounded-xl shadow-md">
                         <h2 class="text-xl font-bold mb-4 border-b pb-2">2. Nutrição</h2>
                         <div class="space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-teal-800 mb-2">2.1 Quantas porções de frutas/vegetais?</label>
-                                <!-- Seletor estilo Carrossel -->
                                 <div class="grid grid-cols-6 gap-2" id="fruit-selector">
                                     <button type="button" class="selector-btn fruit-option py-3 rounded-lg font-medium" data-value="0">0</button>
                                     <button type="button" class="selector-btn fruit-option py-3 rounded-lg font-medium" data-value="1">1</button>
@@ -202,7 +194,6 @@
                         </div>
                     </div>
 
-                    <!-- SEÇÃO 3: BEM-ESTAR -->
                     <div class="bg-white p-6 rounded-xl shadow-md">
                         <h2 class="text-xl font-bold mb-4 border-b pb-2">3. Bem-Estar</h2>
                         <div class="space-y-4">
@@ -217,16 +208,10 @@
                         </div>
                     </div>
 
-                    <!-- BOTÕES DE AÇÃO -->
                     <div class="space-y-3">
                         <button type="submit" id="submit-checkin-btn" class="w-full bg-teal-600 text-white font-bold py-4 px-4 rounded-xl hover:bg-teal-700 transition-colors duration-200 text-lg shadow-lg">
                             Finalizar Check-in
                         </button>
-                        
-                        <!-- BOTÃO DE LIMPAR (NOVO) 
-                        <button type="button" id="delete-checkin-btn" class="w-full bg-red-100 text-red-600 font-semibold py-3 px-4 rounded-xl hover:bg-red-200 transition-colors duration-200 border border-red-200 hidden">
-                            🗑️ Excluir Check-in deste dia
-                        </button>-->
                     </div>
                 </form>
 
@@ -237,7 +222,6 @@
             </main>
         </div>
 
-        <!-- MODAL DE RESUMO -->
         <div id="summary-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
             <div id="summary-card-frame" class="p-1 bg-gradient-to-br from-teal-400 via-green-400 to-emerald-500 rounded-2xl shadow-2xl w-full max-w-lg">
                 <div class="bg-white rounded-xl">
@@ -266,7 +250,6 @@
             </div>
         </div>
         
-        <!-- TELA FINAL (AGRADECIMENTO + TABELA COMPLETA) -->
         <div id="thank-you-screen" class="hidden fixed inset-0 text-center flex flex-col items-center justify-start bg-cover bg-center z-40 p-4 pt-8 pb-8 overflow-y-auto">
              <div id="motivational-card" class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 w-full max-w-md mx-auto mb-6">
                  <p id="motivational-quote" class="text-center text-lg italic text-gray-700 mb-4"></p>
@@ -314,7 +297,6 @@
             </div>
         </div>
 
-        <!-- MODAL RANKING -->
         <div id="ranking-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
@@ -325,7 +307,6 @@
             </div>
         </div>
         
-        <!-- MODAL TABELA DE PONTUAÇÃO (DUPLICADA DA TELA FINAL) -->
         <div id="score-table-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
@@ -336,7 +317,6 @@
             </div>
         </div>
 
-        <!-- MODAL RANKING SEMANAL -->
         <div id="weekly-ranking-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
@@ -347,7 +327,6 @@
             </div>
         </div>
         
-        <!-- MODAL CAMPEÕES -->
         <div id="weekly-champions-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
@@ -411,7 +390,6 @@
         // Buttons for selectors
         const strengthOptions = document.querySelectorAll('.strength-option');
         const fruitOptions = document.querySelectorAll('.fruit-option');
-        const deleteCheckinBtn = document.getElementById('delete-checkin-btn');
 
         // Modals Elements
         const rankingModal = document.getElementById('ranking-modal');
@@ -817,49 +795,8 @@
             if (participantLogs[dateKey]) {
                 showMessage('Editando registro existente.', 'info');
                 prefillForm(participantLogs[dateKey].inputs);
-                deleteCheckinBtn.classList.remove('hidden'); // Exibe o botão de deletar se já existe registro
-            } else {
-                deleteCheckinBtn.classList.add('hidden');
             }
             updateLeaderboardUI();
-        });
-
-        // --- DELETE CHECKIN LOGIC ---
-        if (deleteCheckinBtn) {
-            deleteCheckinBtn.addEventListener('click', async () => {
-                if (!confirm("Tem certeza que deseja EXCLUIR o check-in deste dia? Essa ação não pode ser desfeita.")) {
-                    return;
-            }
-        }
-            
-            const deleteBtn = document.getElementById('delete-checkin-btn');
-            deleteBtn.disabled = true;
-            deleteBtn.textContent = "Excluindo...";
-
-            try {
-                const dateKey = getFormattedDateKey(state.selectedDate);
-                const participantRef = doc(state.db, `artifacts/${state.appId}/public/data/healthChallenge`, state.selectedParticipant);
-                const currentData = state.allData[state.selectedParticipant] || { dailyLogs: {} };
-                
-                // Remove a chave do dia específico localmente
-                if (currentData.dailyLogs[dateKey]) {
-                    delete currentData.dailyLogs[dateKey];
-                }
-
-                // Atualiza o documento no Firestore com o objeto modificado
-                await setDoc(participantRef, currentData);
-                
-                mainApp.classList.add('hidden');
-                showMotivationalCard();
-                thankYouScreen.classList.remove('hidden');
-                
-            } catch (error) {
-                console.error("Erro ao excluir:", error);
-                alert("Erro ao excluir o registro.");
-            } finally {
-                deleteBtn.disabled = false;
-                deleteBtn.textContent = "🗑️ Excluir Check-in deste dia";
-            }
         });
 
         // --- SUBMIT LOGIC ---
