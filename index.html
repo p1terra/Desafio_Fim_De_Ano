@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .hidden { display: none; }
+        .hidden { display: none !important; }
         .loader {
             border: 4px solid #f3f3f3;
             border-top: 4px solid #3498db;
@@ -62,11 +62,14 @@
 <body class="bg-gray-50 text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 sm:p-6 max-w-5xl">
+        
+        <!-- LOADING -->
         <div id="loading-screen" class="text-center p-10">
             <div class="loader mx-auto"></div>
             <p class="mt-4 text-gray-600">Conectando ao servidor...</p>
         </div>
 
+        <!-- TELA DE SETUP (INÍCIO) -->
         <div id="setup-screen" class="hidden">
             <header class="text-center mb-6 max-w-md mx-auto">
                  <img src="imagens/logo_1.png" alt="logo" class="mx-auto w-full max-w-xs rounded-lg mb-4" onerror="this.style.display='none'">
@@ -89,6 +92,8 @@
                 </div>
                 <button id="confirm-setup-btn" disabled class="w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200">Confirmar e Continuar</button>
             </div>
+            
+            <!-- MENU DE RELATÓRIOS -->
             <div class="max-w-md mx-auto text-center mt-6 space-y-2">
                  <button id="score-table-btn" class="w-full bg-gray-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">Tabela de Pontuação: Regras 2.0</button>
                  <div class="flex gap-2">
@@ -103,6 +108,7 @@
             </div>
         </div>
 
+        <!-- TELA PRINCIPAL (FORMULÁRIO) -->
         <div id="main-app" class="hidden">
             <header class="text-center mb-4">
                  <h1 class="text-3xl sm:text-4xl font-bold text-teal-600">Check-in Diário</h1>
@@ -218,7 +224,7 @@
                         </button>
                         
                         <!-- BOTÃO DE LIMPAR (NOVO) -->
-                        <button type="button" id="delete-checkin-btn" class="w-full bg-red-100 text-red-600 font-semibold py-3 px-4 rounded-xl hover:bg-red-200 transition-colors duration-200 border border-red-200">
+                        <button type="button" id="delete-checkin-btn" class="w-full bg-red-100 text-red-600 font-semibold py-3 px-4 rounded-xl hover:bg-red-200 transition-colors duration-200 border border-red-200 hidden">
                             🗑️ Excluir Check-in deste dia
                         </button>
                     </div>
@@ -231,8 +237,9 @@
             </main>
         </div>
 
-        <div id="summary-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto">
-            <div id="summary-card-frame" class="p-1 bg-gradient-to-br from-teal-400 via-green-400 to-emerald-500 rounded-2xl shadow-2xl w-full max-w-lg mx-auto my-8">
+        <!-- MODAL DE RESUMO -->
+        <div id="summary-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
+            <div id="summary-card-frame" class="p-1 bg-gradient-to-br from-teal-400 via-green-400 to-emerald-500 rounded-2xl shadow-2xl w-full max-w-lg">
                 <div class="bg-white rounded-xl">
                     <div id="summary-content" class="p-6 subtle-bg">
                         <h2 class="text-2xl font-bold text-center text-teal-600 mb-2">Resumo do Check-in</h2>
@@ -259,6 +266,7 @@
             </div>
         </div>
         
+        <!-- TELA FINAL (AGRADECIMENTO + TABELA COMPLETA) -->
         <div id="thank-you-screen" class="hidden fixed inset-0 text-center flex flex-col items-center justify-start bg-cover bg-center z-40 p-4 pt-8 pb-8 overflow-y-auto">
              <div id="motivational-card" class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 w-full max-w-md mx-auto mb-6">
                  <p id="motivational-quote" class="text-center text-lg italic text-gray-700 mb-4"></p>
@@ -273,7 +281,7 @@
                          </thead>
                          <tbody>
                             <tr class="bg-gray-200"><td class="p-2 font-semibold" colspan="2">Meta Aeróbica (Semanal)</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">150+ min</td><td class="p-2 text-right">175 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">130+ min</td><td class="p-2 text-right">175 pts</td></tr>
                             <tr class="border-b"><td class="p-2 pl-6 text-xs">100 a 129 min</td><td class="p-2 text-right">122.5 pts</td></tr>
                             <tr class="border-b"><td class="p-2 pl-6 text-xs">80 a 99 min</td><td class="p-2 text-right">105 pts</td></tr>
                             <tr class="border-b"><td class="p-2 pl-6 text-xs">60 a 79 min</td><td class="p-2 text-right">87.5 pts</td></tr>
@@ -283,18 +291,18 @@
                             
                             <tr class="bg-gray-200"><td class="p-2 font-semibold" colspan="2">Meta de Força (Semanal)</td></tr>
                             <tr class="border-b"><td class="p-2 pl-6 text-xs">2 sessões</td><td class="p-2 text-right">105 pts</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">1 sessão</td><td class="p-2 text-right">40 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">1 sessão</td><td class="p-2 text-right">21 pts</td></tr>
 
                             <tr class="bg-gray-200"><td class="p-2 font-semibold" colspan="2">Frutas/Vegetais (Diário)</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">5+ porções</td><td class="p-2 text-right">20 pts</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">4 porções</td><td class="p-2 text-right">12 pts</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">3 porções</td><td class="p-2 text-right">6 pts</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">2 porções</td><td class="p-2 text-right">4 pts</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">1 porção</td><td class="p-2 text-right">2 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">5+ porções</td><td class="p-2 text-right">15 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">4 porções</td><td class="p-2 text-right">9 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">3 porções</td><td class="p-2 text-right">4.5 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">2 porções</td><td class="p-2 text-right">3 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">1 porção</td><td class="p-2 text-right">1.5 pts</td></tr>
 
                             <tr class="bg-gray-200"><td class="p-2 font-semibold" colspan="2">Outros (Diário)</td></tr>
                             <tr class="border-b"><td class="p-2 pl-6 text-xs">2L+ Água</td><td class="p-2 text-right">15 pts</td></tr>
-                            <tr class="border-b"><td class="p-2 pl-6 text-xs">Alimentação Limpa (4 itens)</td><td class="p-2 text-right">Até 15 pts</td></tr>
+                            <tr class="border-b"><td class="p-2 pl-6 text-xs">Sem Doces/FastFood</td><td class="p-2 text-right">10 pts</td></tr>
                             <tr class="border-b"><td class="p-2 pl-6 text-xs">7h+ Sono</td><td class="p-2 text-right">10 pts</td></tr>
                             <tr><td class="p-2 pl-6 text-xs">Cuidado Pessoal (cada)</td><td class="p-2 text-right">2 pts</td></tr>
                          </tbody>
@@ -306,8 +314,9 @@
             </div>
         </div>
 
-        <div id="ranking-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto">
-            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-auto my-8">
+        <!-- MODAL RANKING -->
+        <div id="ranking-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-center text-teal-600 mb-4">Ranking Geral Detalhado</h2>
                     <div id="ranking-modal-list" class="space-y-3"></div>
@@ -316,8 +325,9 @@
             </div>
         </div>
         
-        <div id="score-table-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto">
-            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-auto my-8">
+        <!-- MODAL TABELA DE PONTUAÇÃO (DUPLICADA DA TELA FINAL) -->
+        <div id="score-table-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-center text-teal-600 mb-4">Tabela de Pontuação</h2>
                     <div id="score-table-content"></div>
@@ -326,8 +336,9 @@
             </div>
         </div>
 
-        <div id="weekly-ranking-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto">
-            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-auto my-8">
+        <!-- MODAL RANKING SEMANAL -->
+        <div id="weekly-ranking-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-center text-teal-600 mb-4">Ranking Semanal</h2>
                     <div id="weekly-ranking-list" class="space-y-4"></div>
@@ -336,8 +347,9 @@
             </div>
         </div>
         
-        <div id="weekly-champions-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto">
-            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-auto my-8">
+        <!-- MODAL CAMPEÕES -->
+        <div id="weekly-champions-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-4 z-50 overflow-y-auto flex items-center justify-center">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold text-center text-teal-600 mb-4">Ganhadores Semanais</h2>
                     <div class="bg-gray-50 p-3 rounded-lg border mb-4">
@@ -384,6 +396,7 @@
         const setupScreen = document.getElementById('setup-screen');
         const mainApp = document.getElementById('main-app');
         const thankYouScreen = document.getElementById('thank-you-screen');
+        
         const setupDate = document.getElementById('setup-date');
         const setupParticipant = document.getElementById('setup-participant');
         const confirmDetails = document.getElementById('confirmation-details');
@@ -400,15 +413,16 @@
         const fruitOptions = document.querySelectorAll('.fruit-option');
         const deleteCheckinBtn = document.getElementById('delete-checkin-btn');
 
-        // Modals
+        // Modals Elements
         const rankingModal = document.getElementById('ranking-modal');
         const scoreTableModal = document.getElementById('score-table-modal');
         const weeklyRankingModal = document.getElementById('weekly-ranking-modal');
         const weeklyChampionsModal = document.getElementById('weekly-champions-modal');
 
         // --- HELPER FUNCTIONS ---
+        // ATUALIZADO: Regras da Tabela da Planilha Original para v2
         const getAerobicScore = (minutes) => {
-            if (minutes >= 150) return 175;
+            if (minutes >= 130) return 175;
             if (minutes >= 100) return 122.5;
             if (minutes >= 80) return 105;
             if (minutes >= 60) return 87.5;
@@ -419,15 +433,15 @@
         };
         const getStrengthScore = (sessions) => {
             if (sessions >= 2) return 105;
-            if (sessions >= 1) return 40;
+            if (sessions >= 1) return 21; // Ajustado conforme tabela original
             return 0;
         };
         const getFruitScore = (portions) => {
-            if (portions >= 5) return 20;
-            if (portions === 4) return 12;
-            if (portions === 3) return 6;
-            if (portions === 2) return 4;
-            if (portions === 1) return 2;
+            if (portions >= 5) return 15;
+            if (portions === 4) return 9;
+            if (portions === 3) return 4.5;
+            if (portions === 2) return 3;
+            if (portions === 1) return 1.5;
             return 0;
         };
         const getSelfCareScore = (activities) => activities.length * 2;
@@ -468,7 +482,8 @@
         const setupSelectors = () => {
             const handleSelection = (options, hiddenInputId) => {
                 options.forEach(btn => {
-                    btn.addEventListener('click', () => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent submit
                         options.forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                         document.getElementById(hiddenInputId).value = btn.getAttribute('data-value');
@@ -484,12 +499,11 @@
              const target = Array.from(options).find(b => b.getAttribute('data-value') == value);
              if (target) {
                  target.classList.add('active');
-             } else if (value >= 2 && options === strengthOptions) { // Handle 2+ logic
+             } else if (value >= 2 && options === strengthOptions) {
                  options[2].classList.add('active');
-             } else if (value >= 5 && options === fruitOptions) { // Handle 5+ logic
+             } else if (value >= 5 && options === fruitOptions) {
                  options[5].classList.add('active');
              } else {
-                 // Default to 0 if nothing matches
                  options[0].classList.add('active');
              }
         };
@@ -556,10 +570,13 @@
                 
                 let cleanEatingScore = 0;
                 if (inputs.cleanEating) {
-                    cleanEatingScore += inputs.cleanEating.noSweets ? 3.75 : 0;
-                    cleanEatingScore += inputs.cleanEating.noSoda ? 3.75 : 0;
-                    cleanEatingScore += inputs.cleanEating.noFastFood ? 3.75 : 0;
-                    cleanEatingScore += inputs.cleanEating.noFried ? 3.75 : 0;
+                    // Sem doces/refri = 10 pts (Se tudo marcado, consideraremos 10pts divididos ou regra simplificada: 2.5 cada ou 10 fixo?)
+                    // Regra: "Sem Doces/etc 10 pts" (geral). Vamos assumir que marcar tudo dá 10.
+                    // Para simplificar: Cada item vale 2.5 pts.
+                    cleanEatingScore += inputs.cleanEating.noSweets ? 2.5 : 0;
+                    cleanEatingScore += inputs.cleanEating.noSoda ? 2.5 : 0;
+                    cleanEatingScore += inputs.cleanEating.noFastFood ? 2.5 : 0;
+                    cleanEatingScore += inputs.cleanEating.noFried ? 2.5 : 0;
                 }
 
                 weeklyAggregates[weekKey].dailyPoints += 
@@ -583,7 +600,7 @@
         const updateLeaderboardUI = () => {
             const allScores = participants.map(calculateAllScores).sort((a, b) => b.total - a.total);
             leaderboardContainer.innerHTML = allScores.map((score, index) => {
-                const medal = ['🥇', '🥈', '�'][index] || '🔹';
+                const medal = ['🥇', '🥈', '🥉'][index] || '🔹';
                 return `<div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg border"><div class="flex items-center"><span class="text-xl w-8">${medal}</span><span class="font-bold">${score.name}</span></div><div class="text-right"><div class="text-lg font-bold text-teal-600">${Math.round(score.total)} <span class="text-xs font-normal">Total</span></div></div></div>`;
             }).join('');
         };
@@ -614,10 +631,10 @@
                     
                     let cleanEatingScore = 0;
                     if (inputs.cleanEating) {
-                        cleanEatingScore += inputs.cleanEating.noSweets ? 3.75 : 0;
-                        cleanEatingScore += inputs.cleanEating.noSoda ? 3.75 : 0;
-                        cleanEatingScore += inputs.cleanEating.noFastFood ? 3.75 : 0;
-                        cleanEatingScore += inputs.cleanEating.noFried ? 3.75 : 0;
+                        cleanEatingScore += inputs.cleanEating.noSweets ? 2.5 : 0;
+                        cleanEatingScore += inputs.cleanEating.noSoda ? 2.5 : 0;
+                        cleanEatingScore += inputs.cleanEating.noFastFood ? 2.5 : 0;
+                        cleanEatingScore += inputs.cleanEating.noFried ? 2.5 : 0;
                     }
 
                     allWeeklyData[weekKey][participantName].dailyPoints += 
@@ -762,11 +779,12 @@
                 const selectedDate = new Date(dateVal + 'T12:00:00');
                 
                 // --- NOVA RESTRIÇÃO DE DATA ---
+                // Verifica se a data está fora do intervalo 01/12/2025 a 20/12/2025
                 if (selectedDate < challengeStartDate || selectedDate > challengeEndDate) {
                     confirmBtn.disabled = true;
                     confirmDetails.classList.add('hidden');
                     alert("Data não válida. Favor escolher uma data entre 01/12 a 20/12.");
-                    setupDate.value = '';
+                    setupDate.value = ''; // Limpa a data inválida
                     return;
                 }
 
@@ -799,9 +817,9 @@
             if (participantLogs[dateKey]) {
                 showMessage('Editando registro existente.', 'info');
                 prefillForm(participantLogs[dateKey].inputs);
-                deleteCheckinBtn.classList.remove('hidden'); // Show delete button if editing
+                deleteCheckinBtn.classList.remove('hidden'); // Exibe o botão de deletar se já existe registro
             } else {
-                deleteCheckinBtn.classList.add('hidden'); // Hide delete button if new
+                deleteCheckinBtn.classList.add('hidden');
             }
             updateLeaderboardUI();
         });
@@ -821,12 +839,12 @@
                 const participantRef = doc(state.db, `artifacts/${state.appId}/public/data/healthChallenge`, state.selectedParticipant);
                 const currentData = state.allData[state.selectedParticipant] || { dailyLogs: {} };
                 
-                // Remove the specific date key locally
+                // Remove a chave do dia específico localmente
                 if (currentData.dailyLogs[dateKey]) {
                     delete currentData.dailyLogs[dateKey];
                 }
 
-                // Update Firestore (Rewrite the object without that key)
+                // Atualiza o documento no Firestore com o objeto modificado
                 await setDoc(participantRef, currentData);
                 
                 mainApp.classList.add('hidden');
@@ -872,7 +890,7 @@
                 currentData.dailyLogs[dateKey] = { inputs };
                 await setDoc(participantRef, currentData);
                 showMessage('Check-in salvo com sucesso!', 'success');
-                showSummary(); // Define showSummary function if not already present in the block above
+                showSummary(); 
             } catch (error) {
                 console.error("Erro ao salvar:", error);
                 showMessage('Erro ao salvar. Tente novamente.', 'error');
@@ -882,14 +900,13 @@
             }
         });
 
-        // --- Summary Logic (simplified for brevity, make sure full version is used) ---
+        // --- Summary Logic ---
         const createProgressBar = (label, value, max, color) => {
             const percentage = max > 0 ? (value / max) * 100 : 0;
             return `<div><div class="flex justify-between mb-1"><span class="font-semibold text-gray-700">${label}</span><span class="text-gray-600">${value} / ${max}</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-${color}-500 h-2.5 rounded-full" style="width: ${percentage}%"></div></div></div>`;
         };
 
         const showSummary = () => {
-             // ... existing logic from previous code block ...
              const { selectedParticipant, selectedDate } = state;
             const dateKey = getFormattedDateKey(selectedDate);
             const weekKey = getChallengeWeekKey(selectedDate);
@@ -901,10 +918,10 @@
             
             let cleanEatingPts = 0;
             if (dailyInputs.cleanEating) {
-                cleanEatingPts += dailyInputs.cleanEating.noSweets ? 3.75 : 0;
-                cleanEatingPts += dailyInputs.cleanEating.noSoda ? 3.75 : 0;
-                cleanEatingPts += dailyInputs.cleanEating.noFastFood ? 3.75 : 0;
-                cleanEatingPts += dailyInputs.cleanEating.noFried ? 3.75 : 0;
+                cleanEatingPts += dailyInputs.cleanEating.noSweets ? 2.5 : 0;
+                cleanEatingPts += dailyInputs.cleanEating.noSoda ? 2.5 : 0;
+                cleanEatingPts += dailyInputs.cleanEating.noFastFood ? 2.5 : 0;
+                cleanEatingPts += dailyInputs.cleanEating.noFried ? 2.5 : 0;
             }
 
             const dailySleepPts = dailyInputs.sleep ? 10 : 0;
@@ -946,7 +963,6 @@
         };
 
         // --- EXPORT & NAVIGATION LOGIC ---
-        // (Includes existing handlers for export buttons, close buttons, navigation buttons)
         document.getElementById('export-png-btn').addEventListener('click', () => {
             html2canvas(document.getElementById('summary-content'), { scale: 2 }).then(canvas => {
                 const link = document.createElement('a');
@@ -970,7 +986,7 @@
             confirmBtn.disabled = true;
         });
 
-        // Add event listeners for the dashboard buttons
+        // Listeners corrigidos para os botões do Dashboard
         document.getElementById('ranking-btn').addEventListener('click', () => { updateRankingModalUI(); rankingModal.classList.remove('hidden'); });
         document.getElementById('weekly-ranking-btn').addEventListener('click', () => { updateWeeklyRankingUI(); weeklyRankingModal.classList.remove('hidden'); });
         document.getElementById('weekly-champions-btn').addEventListener('click', () => { updateWeeklyChampionsUI(); weeklyChampionsModal.classList.remove('hidden'); });
@@ -1009,7 +1025,6 @@
                             state.allData[doc.id] = doc.data();
                         });
                         
-                        // Update UIs if they are visible
                         if (!firstLoad) {
                              if (!mainApp.classList.contains('hidden')) updateLeaderboardUI();
                              if (!rankingModal.classList.contains('hidden')) updateRankingModalUI();
@@ -1027,7 +1042,8 @@
                 setupParticipant.innerHTML = '<option value="">-- Selecione --</option>' + participants.map(p => `<option value="${p}">${p}</option>`).join('');
                 populateChecklists();
                 populateScoreTableModal();
-                setupSelectors(); // Initialize selectors
+                setupSelectors(); 
+                
                 loadingScreen.classList.add('hidden');
                 setupScreen.classList.remove('hidden');
 
@@ -1040,4 +1056,6 @@
         init();
     </script>
 </body>
-</html>�
+</html>
+```
+```eof
